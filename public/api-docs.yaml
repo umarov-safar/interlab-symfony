@@ -1,0 +1,18 @@
+openapi: 3.0.0
+info:
+  title: Users API for "Лаборатория интернет"
+  version: 1.0.0
+paths:
+  /api/v1/users:
+    get:
+      description: Get All User
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    example: []
