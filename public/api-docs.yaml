@@ -31,3 +31,26 @@ paths:
                   data:
                     type: array
                     example: []
+  /users/{id}:
+    get:
+      tags:
+        - users
+      description: Get User
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID user
+      responses:
+        200:
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    example: [ ]

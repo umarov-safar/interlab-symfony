@@ -18,14 +18,9 @@ use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPasspor
  */
 class ApiTokenAuthenticator extends AbstractAuthenticator
 {
-    /**
-     * Called on every request to decide if this authenticator should be
-     * used for the request. Returning `false` will cause this authenticator
-     * to be skipped.
-     */
     public function supports(Request $request): ?bool
     {
-        // return $request->headers->has('X-AUTH-TOKEN');
+        return false;
     }
 
     public function authenticate(Request $request): Passport
@@ -42,6 +37,7 @@ class ApiTokenAuthenticator extends AbstractAuthenticator
         // $userIdentifier = /** ... */;
 
         // return new SelfValidatingPassport(new UserBadge($userIdentifier));
+
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
