@@ -1,0 +1,60 @@
+ReadonlyProperties:
+  type: object
+  properties:
+    id:
+      type: integer
+      required: true
+      description: ID user
+
+FillableProperties:
+  type: object
+  properties:
+    name:
+      type: string
+      description: Name
+      example: Anton
+    last_name:
+      type: string
+      description: Last Name
+      example: Antonov
+      nullable: true
+    email:
+      type: string
+      format: email
+      description: Email
+      required: true
+
+PasswordProperty:
+  type: object
+  properties:
+    password:
+      type: string
+      description: Password
+      example: secret
+      required: true
+
+User:
+  allOf:
+    - $ref: '#/ReadonlyProperties'
+    - $ref: '#/FillableProperties'
+
+UserResponse:
+  type: object
+  properties:
+    data:
+      $ref: '#/User'
+
+UserCreateOrUpdateRequest:
+  allOf:
+    - $ref: '#/FillableProperties'
+    - $ref: '#/PasswordProperty'
+
+UserListResponse:
+  type: object
+  properties:
+    data:
+      type: array
+      items:
+        - $ref: '#/User'
+    meta:
+      type: object
