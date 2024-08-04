@@ -49,8 +49,53 @@ paths:
           content:
             application/json:
               schema:
+                $ref: './schema/users.yaml#/UserResponse'
+    patch:
+      tags:
+        - users
+      description: Update user
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './schema/users.yaml#/UserCreateOrUpdateRequest'
+      responses:
+        200:
+          description: Success response
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
                   data:
-                    type: array
-                    example: [ ]
+                    type: string
+                    example: User was deleted successfully
+    delete:
+      tags:
+        - users
+      description: Delete User
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID user
+      responses:
+        200:
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                    example: User was deleted successfully
