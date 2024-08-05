@@ -26,11 +26,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    example: []
+                $ref: './schema/users.yaml#/UserResponse'
   /users/{id}:
 #    get:
 #      tags:
@@ -95,3 +91,45 @@ paths:
                   data:
                     type: string
                     example: User was deleted successfully
+
+  /auth/login:
+    post:
+      tags:
+        - users
+      description: Login to get token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './schema/users.yaml#/UserLoginRequest'
+      responses:
+        200:
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+  /auth/current-user:
+    post:
+      tags:
+        - users
+      description: Get current user by token
+      parameters:
+        - in: header
+          name: x-api-token
+          schema:
+            type: string
+          description: API token
+      responses:
+        200:
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: './schema/users.yaml#/UserResponse'

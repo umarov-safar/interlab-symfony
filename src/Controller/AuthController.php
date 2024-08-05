@@ -64,6 +64,6 @@ class AuthController extends AbstractController
             throw new \Exception("UnAuthorization");
         }
 
-        return $this->json($user);
+        return $this->json(['data' => $user]);
     }
 }

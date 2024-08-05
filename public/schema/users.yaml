@@ -58,3 +58,13 @@ UserListResponse:
         - $ref: '#/User'
     meta:
       type: object
+
+UserLoginRequest:
+  type: object
+  properties:
+    password:
+      type: string
+      required: true
+    email:
+      type: string
+      required: true
