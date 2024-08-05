@@ -16,9 +16,6 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-
-            access_token:
-                token_handler: App\Security\AccessTokenHandler
             custom_authenticators:
                 - App\Security\ApiTokenAuthenticator
             # activate different ways to authenticate
